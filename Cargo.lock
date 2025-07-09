@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "vietta-solver-3"
+name = "vietta-solver"
 version = "0.1.0"
