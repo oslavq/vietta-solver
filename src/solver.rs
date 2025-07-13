@@ -28,9 +28,10 @@ impl Solution {
 // 1.   x1*x2=q  |   x1=q/x2
 // 2.   x1+x2=-p |   x1=-p-x2
 pub fn solve(p: i32, q: i32) -> Solution {
-    let pairs_1: Vec<[i32; 2]> = find_factors(q); // pairs of numbers that satisfy the first boundary
+    let mut pairs_1: Vec<[i32; 2]> = find_factors(q); // pairs of numbers that satisfy the first boundary
+    pairs_1.reverse();
     let mut sol = Solution::new_blank();
-    for pair in pairs_1 { // go over first set of pairs
+    'outer: for pair in pairs_1 { // go over first set of pairs
         for enc_p in encode(pair) { // go over each encoded pair
             if enc_p[0] + enc_p[1] == -p { // found a valid pair
                 if enc_p[0] == enc_p[1] { // if there is only one root
@@ -42,7 +43,9 @@ pub fn solve(p: i32, q: i32) -> Solution {
                     sol.x1 = Some(enc_p[1]); sol.x2 = Some(enc_p[0]);
                   }
                 }
-            };}};
+                break 'outer;
+            }
+        }};
     return sol;
 }
 
