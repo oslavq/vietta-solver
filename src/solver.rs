@@ -35,7 +35,7 @@ pub fn solve(p: i32, q: i32) -> Solution {
         for enc_p in encode(pair) { // go over each encoded pair
             if enc_p[0] + enc_p[1] == -p { // found a valid pair
                 if enc_p[0] == enc_p[1] { // if there is only one root
-                    sol = Solution { x1: Some(enc_p[0]), x2: None };
+                    sol.x1 = Some(enc_p[0]);
                 } else { // if there are two roots, sort the values
                   if enc_p[0] < enc_p[1] {
                     sol.x1 = Some(enc_p[0]); sol.x2 = Some(enc_p[1]);
