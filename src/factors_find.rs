@@ -1,16 +1,16 @@
 use std::{collections::HashSet, vec};
 
 pub fn find_factors(num: i32) -> Vec<[i32; 2]> {
-    let mut vector: Vec<[i32; 2]> = vec![[1, num.abs()]];
+    let mut vector: Vec<[i32; 2]> = vec![[1, num.abs()]]; // store found factors
     let mut used_nums: HashSet<i32> = HashSet::new(); // avoid repetition
 
     let mut curr_step: i32 = 1; // see #5
 
-    for i in 2..=(num / 2).abs() + 1 { // iterate over nums from 2 to the half of q
+    for i in 2..=(num / 2).abs() + 1 {
         if i % curr_step != 0 { continue; }
-        if used_nums.contains(&i) || i == num.abs() { break } // if i is a number on position 2 from any previous entry
-        if (num.abs() % i) == 0 {vector.push([i, num.abs() / i]); // if i turns out to be a factor if num
-            used_nums.insert(num.abs() / i); // save second factor
+        if used_nums.contains(&i) || i == num.abs() { break } // if i is a number on position 2 from any previous entry, it is just a mirror of it (3*6 and 6*3 are mirrors)
+        if (num.abs() % i) == 0 {vector.push([i, num.abs() / i]); // if i is a valid factor of num
+            used_nums.insert(num.abs() / i);
             let v_len: usize = vector.len();
             curr_step = vector[v_len-1][0] - vector.get(v_len-2).unwrap_or(&[1, 1])[0];
         }}

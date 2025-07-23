@@ -7,7 +7,7 @@ pub struct Solution {
 }
 
 pub enum RootAmount {
-    None,
+    None, // no solutions
     One,
     Two
 }
@@ -25,18 +25,19 @@ impl Solution {
     }
 }
 
-// 1.   x1*x2=q  |   x1=q/x2
-// 2.   x1+x2=-p |   x1=-p-x2
+// Boundary 1.   x1*x2=q  |   x1=q/x2
+// Boundary 2.   x1+x2=-p |   x1=-p-x2
 pub fn solve(p: i32, q: i32) -> Solution {
-    let mut pairs_1: Vec<[i32; 2]> = find_factors(q); // pairs of numbers that satisfy the first boundary
-    pairs_1.reverse();
+    // factors of x2 are the numbers that satisfy the first boundary
+    let mut pairs_1: Vec<[i32; 2]> = find_factors(q);
+    pairs_1.reverse(); // see #8
     let mut sol = Solution::new_blank();
-    'outer: for pair in pairs_1 { // go over first set of pairs
-        for enc_p in encode(pair) { // go over each encoded pair
-            if enc_p[0] + enc_p[1] == -p { // found a valid pair
+    'outer: for pair in pairs_1 { // find the ones that also satisfy the second boundary
+        for enc_p in encode(pair) { // check all possible combinations of minus sign position
+            if enc_p[0] + enc_p[1] == -p { // success
                 if enc_p[0] == enc_p[1] { // if there is only one root
                     sol.x1 = Some(enc_p[0]);
-                } else { // if there are two roots, sort the values
+                } else {
                   if enc_p[0] < enc_p[1] {
                     sol.x1 = Some(enc_p[0]); sol.x2 = Some(enc_p[1]);
                   } else {
