@@ -29,5 +29,6 @@ Clone this repository and `cd` into it, run `cargo build --release` in the termi
 # Limitations
 This script has some technical limitations:
 - Only integers are allowed, no floating point numbers
-- Numbers flowing through the app can only be 32 bit integers (between -2147483648 and 2147483647)
+- Numbers flowing through the app can only be 32 bit integers in size (between -2147483648 and 2147483647)
     - If you need to process bigger numbers, you can do so by editing the source code, simply replace `i32` with `i64` or `i128` and compile the crate again
+- For now, this is a single-threaded application, it will utilize just one core of your CPU

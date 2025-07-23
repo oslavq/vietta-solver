@@ -6,7 +6,7 @@ pub fn find_factors(num: i32) -> Vec<[i32; 2]> {
 
     let mut curr_step: i32 = 1; // see #5
 
-    for i in 2..=((num as f32 / 2f32).ceil() as i32 + 1).abs() { // iterate over nums from 2 to the half of q
+    for i in 2..=(num / 2).abs() + 1 { // iterate over nums from 2 to the half of q
         if i % curr_step != 0 { continue; }
         if used_nums.contains(&i) || i == num.abs() { break } // if i is a number on position 2 from any previous entry
         if (num.abs() % i) == 0 {vector.push([i, num.abs() / i]); // if i turns out to be a factor if num
