@@ -13,8 +13,8 @@ pub enum RootAmount {
 }
 
 impl Solution {
-    fn new_blank() -> Solution { Self { x1: None, x2: None } }
-    fn new(x1: i32, x2: i32) -> Self { Self { x1: Some(x1), x2: Some(x2) }}
+    pub fn new_blank() -> Solution { Self { x1: None, x2: None } }
+    pub fn new(x1: i32, x2: i32) -> Self { Self { x1: Some(x1), x2: Some(x2) }}
 
     pub fn roots_found(&self) -> RootAmount {
         if self.x1 == None && self.x2 == None {
