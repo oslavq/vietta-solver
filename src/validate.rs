@@ -1,6 +1,6 @@
 use crate::solver::{Solution, RootAmount};
 
-pub fn validate(p: i32, q: i32, sol: Solution) -> bool {
+pub fn validate(p: i32, q: i32, sol: &Solution) -> bool {
     match sol.roots_found() {
         RootAmount::None => { false }
         RootAmount::One => {
@@ -26,6 +26,6 @@ fn test_validation() {
     ];
 
     for v in values {
-        assert_eq!(validate(v.0, v.1, v.2), v.3);
+        assert_eq!(validate(v.0, v.1, &v.2), v.3);
     }
 }
