@@ -33,6 +33,9 @@ pub fn solve(p: i32, q: i32) -> Solution {
     pairs_1.reverse(); // see #8
     let mut sol = Solution::new_blank();
     'outer: for pair in pairs_1 { // find the ones that also satisfy the second boundary
+        let (v1a, v2a): (i32, i32) = (pair[0].abs(), pair[1].abs()); // see #12
+        if v1a+v2a < p.abs() || v1a-v2a > p.abs() { continue; };
+
         for enc_p in encode(pair) { // check all possible combinations of minus sign position
             if enc_p[0] + enc_p[1] == -p { // success
                 if enc_p[0] == enc_p[1] { // if there is only one root

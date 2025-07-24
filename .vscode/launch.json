@@ -26,19 +26,19 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'vietta-solver'",
+            "name": "Debug binary 'root_solver'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=vietta-solver",
+                    "--bin=root_solver",
                     "--package=vietta-solver"
                 ],
                 "filter": {
-                    "name": "vietta-solver",
+                    "name": "root_solver",
                     "kind": "bin"
                 }
             },
-            "args": ["-5", "-6"],
+            "args": ["-28", "96"],
             "cwd": "${workspaceFolder}"
         },
         {
