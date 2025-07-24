@@ -6,7 +6,6 @@ use vietta_solver::validate::validate;
 
 fn main() {
     let args: Vec<String> = args().collect();
-    dbg!(args.len());
     if args.len() < 3 || args.len() > 4 { panic!("Please enter p and q as arguments\n(from a quadratic expression like x^2+px+q)\nYou can also use optional argument --no-check to not perform validation"); }
     let (mut p, mut q): (i32, i32) = (0, 0);
     let mut iteration: u8 = 0;
@@ -23,7 +22,7 @@ fn main() {
         }
     }
     if p == 0 { panic!("p cannot be zero"); }
-    let validation_enabled: bool = if args.get(3) == Some(&"--no-check".to_string()) { false } else { false };
+    let validation_enabled: bool = if args.get(3) == Some(&"--no-check".to_string()) { false } else { true };
 
     let result = solve(p, q);
     match result.roots_found() {
