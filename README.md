@@ -14,6 +14,8 @@ Change `vietta-solver` to name of the executable, so if you are on Windows for e
 ```
 
 # FAQs
+- What is Vieta's theorem?
+    - Basically, it states that in a quadratic equation like `x^2+px+q=0`, the sum of the two roots equals negative `p`, and their product equals `q`: `x1+x2=-p; x1*x2=q`
 - Why it is Viet**t**a and not Vieta solver?
     - I did not know that "Vieta" is written with one *t*
 - Why did you build it?
